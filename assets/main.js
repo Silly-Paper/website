@@ -3139,6 +3139,33 @@
 		onvisible.add('.divider-component.instance-5', { style: 'fade-in', speed: 1000, intensity: 5, threshold: 3, delay: 0, replay: false });
 		onvisible.add('.container-component.instance-9', { style: 'fade-in-background', speed: 2500, intensity: 5, threshold: 3, delay: 0, replay: false });
 		onvisible.add('.container-component.instance-4', { style: 'fade-in-background', speed: 2500, intensity: 5, threshold: 3, delay: 0, replay: false });
+
+	// Load external content
+		function loadExternalContent() {
+			var elements = document.querySelectorAll('[data-content-file]');
+			elements.forEach(function(element) {
+				var contentFile = element.getAttribute('data-content-file');
+				if (contentFile) {
+					fetch(contentFile)
+						.then(function(response) {
+							if (response.ok) {
+								return response.text();
+							}
+							throw new Error('Failed to load content: ' + response.status);
+						})
+						.then(function(content) {
+							element.innerHTML = content;
+						})
+						.catch(function(error) {
+							console.error('Error loading external content:', error);
+							element.innerHTML = 'Error loading content.';
+						});
+				}
+			});
+		}
+
+		// Load external content when page is ready
+		ready.add(loadExternalContent);
 	
 	// Run ready handlers.
 		ready.run();
