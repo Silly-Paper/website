@@ -3154,7 +3154,29 @@
 							throw new Error('Failed to load content: ' + response.status);
 						})
 						.then(function(content) {
-							element.innerHTML = content;
+							// For better style isolation, wrap content if it contains style tags
+							if (content.includes('<style>') && !content.includes('class="terms-content"')) {
+								// Add a wrapper div with scoping class if not already present
+								var wrapperClass = 'external-content-wrapper';
+								var wrappedContent = '<div class="' + wrapperClass + '">' + content + '</div>';
+								element.innerHTML = wrappedContent;
+								
+								// Update any style tags to be scoped to the wrapper
+								var styleElements = element.querySelectorAll('style');
+								styleElements.forEach(function(styleEl) {
+									var cssText = styleEl.textContent;
+									// Add wrapper class to all CSS selectors that don't already have it
+									var scopedCSS = cssText.replace(/([^{}]+){/g, function(match, selector) {
+										if (selector.trim().indexOf('.' + wrapperClass) === -1) {
+											return '.' + wrapperClass + ' ' + selector.trim() + ' {';
+										}
+										return match;
+									});
+									styleEl.textContent = scopedCSS;
+								});
+							} else {
+								element.innerHTML = content;
+							}
 						})
 						.catch(function(error) {
 							console.error('Error loading external content:', error);
