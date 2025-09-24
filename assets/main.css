@@ -851,7 +851,7 @@ body.is-instant::after {
 	margin-right: var(--margin-right);
 	text-transform: uppercase;
 	color: #FFFFFF;
-	font-family: 'Monomaniac One', cursive;
+	font-family: "Monomaniac One", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	letter-spacing: 0.4rem;
 	width: calc(100% + 0.4rem);
 	font-size: 2.625em;
@@ -920,7 +920,7 @@ body.is-instant::after {
 .text-component.style-5 {
 	text-transform: uppercase;
 	color: #FFFFFF;
-	font-family: 'Monomaniac One', cursive;
+	font-family: "Monomaniac One", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	letter-spacing: -0.1rem;
 	width: 100%;
 	font-size: 3.875em;
@@ -1019,7 +1019,7 @@ body.is-instant::after {
 	text-align: left;
 	text-transform: uppercase;
 	color: #333333;
-	font-family: 'Monomaniac One', cursive;
+	font-family: "Monomaniac One", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	letter-spacing: -0.1rem;
 	width: 100%;
 	font-size: 4em;
@@ -1087,7 +1087,7 @@ body.is-instant::after {
 .text-component.style-11 {
 	text-transform: uppercase;
 	color: #FFFFFF;
-	font-family: 'Monomaniac One', cursive;
+	font-family: "Monomaniac One", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	letter-spacing: -0.1rem;
 	width: 100%;
 	font-size: 4em;
